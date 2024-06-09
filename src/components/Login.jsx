@@ -5,6 +5,7 @@ import Card from "react-bootstrap/Card";
 import InputGroup from "react-bootstrap/InputGroup";
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [validated, setValidated] = useState(false);
@@ -23,7 +24,7 @@ export default function Login() {
       className="border border-secondary shadow-lg"
       style={{ width: "32rem" }}
     >
-      <Card.Img variant="top" src="images/sticky-notes.jpeg" />
+      <Card.Img variant="top" src="images/Childrens-Facebook-Bannered.jpeg" />
       <Card.Body>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Form.Group controlId="validationCustomUsername">
@@ -209,9 +210,9 @@ export default function Login() {
         </Card.Text>
         <Card.Text>
           Don't have an account?{" "}
-          <a href="#register" className="link-light">
+          <Link to="/signup" className="link-light">
             Sign Up
-          </a>
+          </Link>
         </Card.Text>
       </Card.Footer>
     </Card>

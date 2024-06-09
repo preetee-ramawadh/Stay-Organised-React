@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 
 import { useState } from "react";
 
@@ -112,10 +113,10 @@ export default function SignUp() {
       <Card.Footer className="bg-info link-light p-3">
         <Card.Text>
           Already Signed Up?
-          <a href="#login" className="link-light">
+          <Link to="/login" className="link-light">
             {" "}
             Go to Login
-          </a>
+          </Link>
         </Card.Text>
       </Card.Footer>
     </Card>
