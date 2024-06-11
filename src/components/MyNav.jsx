@@ -1,15 +1,12 @@
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
-//import Image from "react-bootstrap/Image";
 import OffcanvasFeatures from "./OffcanvasFeatures";
 import OffcanvasResources from "./OffcanvasResources";
 import ModalSubscribe from "./ModalSubscribe";
 import { useState } from "react";
-// import useFetch from "../services/useFetch";
-// import Spinner from "../Spinner";
-import UsersNavDropdown from "./UsersNavDropdown";
+//import UsersNavDropdown from "./UsersNavDropdown";
 
-export default function MyNav() {
+export default function MyNav({ users, sendUserIdToMyNavBar }) {
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
@@ -36,7 +33,10 @@ export default function MyNav() {
         <Nav.Link onClick={handleResourcesShow}>Resources</Nav.Link>
         <Nav.Link onClick={handleShowModal}>Subscribe</Nav.Link>
 
-        <UsersNavDropdown />
+        {/* <UsersNavDropdown
+          users={users}
+          sendUserIdToMyNav={sendUserIdToMyNavBar}
+        /> */}
       </Nav>
 
       <OffcanvasFeatures

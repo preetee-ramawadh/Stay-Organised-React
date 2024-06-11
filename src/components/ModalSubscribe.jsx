@@ -1,5 +1,4 @@
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 
 export default function ModalSubscribe({ showModal, handleCloseModal }) {
   return (
@@ -11,18 +10,12 @@ export default function ModalSubscribe({ showModal, handleCloseModal }) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title>Modal title</Modal.Title>
+        <Modal.Title>Task Details</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        I will not close if you click outside me. Do not even try to press
-        escape key.
+        <div>hi there</div>
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleCloseModal}>
-          Close
-        </Button>
-        <Button variant="primary">Understood</Button>
-      </Modal.Footer>
+      <Modal.Footer></Modal.Footer>
     </Modal>
   );
 }

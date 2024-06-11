@@ -6,6 +6,8 @@ import InputGroup from "react-bootstrap/InputGroup";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Asteric from "./Asteric";
+import PasswordIcon from "./PasswordIcon";
 
 export default function Login() {
   const [validated, setValidated] = useState(false);
@@ -27,9 +29,9 @@ export default function Login() {
       <Card.Img variant="top" src="images/Childrens-Facebook-Bannered.jpeg" />
       <Card.Body>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
-          <Form.Group controlId="validationCustomUsername">
+          <Form.Group controlId="formGroupGoogle">
             <InputGroup hasValidation>
-              <InputGroup.Text id="inputGroupPrepend">
+              <InputGroup.Text id="inputGroupPrependGoogle">
                 <span id="basic-addonG">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -44,12 +46,12 @@ export default function Login() {
                 </span>
               </InputGroup.Text>
               <FloatingLabel
-                controlId="floatingConfirmPassword"
+                controlId="floatingGoogle"
                 label="Continue with Google"
               >
                 <Form.Control
                   type="text"
-                  placeholder="Username"
+                  placeholder="continue with google"
                   aria-describedby="inputGroupPrepend"
                 />
               </FloatingLabel>
@@ -59,10 +61,10 @@ export default function Login() {
             </InputGroup>
           </Form.Group>
 
-          <Form.Group controlId="validationCustomUsername">
+          <Form.Group controlId="formGroupFacebook">
             <InputGroup hasValidation>
-              <InputGroup.Text id="inputGroupPrepend">
-                <span id="basic-addonG">
+              <InputGroup.Text id="inputGroupPrependFacebook">
+                <span id="basic-addonF">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -76,12 +78,12 @@ export default function Login() {
                 </span>
               </InputGroup.Text>
               <FloatingLabel
-                controlId="floatingConfirmPassword"
+                controlId="floatingFacebook"
                 label="Continue with Facebook"
               >
                 <Form.Control
                   type="text"
-                  placeholder="Username"
+                  placeholder="continue with facebook"
                   aria-describedby="inputGroupPrepend"
                 />
               </FloatingLabel>
@@ -91,10 +93,10 @@ export default function Login() {
             </InputGroup>
           </Form.Group>
 
-          <Form.Group controlId="validationCustomUsername">
+          <Form.Group controlId="formGroupApple">
             <InputGroup hasValidation>
-              <InputGroup.Text id="inputGroupPrepend">
-                <span id="basic-addonG">
+              <InputGroup.Text id="inputGroupPrependApple">
+                <span id="basic-addonA">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -109,12 +111,12 @@ export default function Login() {
                 </span>
               </InputGroup.Text>
               <FloatingLabel
-                controlId="floatingConfirmPassword"
+                controlId="floatingContinueApple"
                 label="Continue with Apple"
               >
                 <Form.Control
                   type="text"
-                  placeholder="Username"
+                  placeholder="continue with apple"
                   aria-describedby="inputGroupPrepend"
                 />
               </FloatingLabel>
@@ -126,29 +128,15 @@ export default function Login() {
 
           <hr />
 
-          <Form.Group controlId="validationCustomUsername" className="shadow">
+          <Form.Group controlId="formGroupEmail" className="shadow">
             <InputGroup hasValidation>
-              <InputGroup.Text id="inputGroupPrepend">
-                <span id="basic-addonG">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="30"
-                    height="30"
-                    fill="currentColor"
-                    className="bi bi-asterisk text-danger"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1"></path>
-                  </svg>
-                </span>
+              <InputGroup.Text id="inputGroupPrependEmail">
+                <Asteric />
               </InputGroup.Text>
-              <FloatingLabel
-                controlId="floatingConfirmPassword"
-                label="Enter your Email"
-              >
+              <FloatingLabel controlId="floatingEmail" label="Enter your Email">
                 <Form.Control
                   type="email"
-                  placeholder="Username"
+                  placeholder="your email"
                   aria-describedby="inputGroupPrepend"
                   required
                 />
@@ -159,25 +147,13 @@ export default function Login() {
             </InputGroup>
           </Form.Group>
 
-          <Form.Group controlId="validationCustomUsername" className="shadow">
+          <Form.Group controlId="formGroupPassword" className="shadow">
             <InputGroup hasValidation>
-              <InputGroup.Text id="inputGroupPrepend">
-                <span id="basic-addonG">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="30"
-                    height="30"
-                    fill="currentColor"
-                    className="bi bi-eye-slash-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z" />
-                    <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z" />
-                  </svg>
-                </span>
+              <InputGroup.Text id="inputGroupPrependPassword">
+                <PasswordIcon />
               </InputGroup.Text>
               <FloatingLabel
-                controlId="floatingConfirmPassword"
+                controlId="floatingPassword"
                 label="Enter Password"
               >
                 <Form.Control

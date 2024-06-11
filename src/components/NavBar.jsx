@@ -4,7 +4,7 @@ import Image from "react-bootstrap/Image";
 import { Link } from "react-router-dom";
 import MyNav from "./MyNav";
 
-export default function NavBar() {
+export default function NavBar({ users, sendUserIdToApp }) {
   return (
     <>
       <Navbar
@@ -23,7 +23,7 @@ export default function NavBar() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <MyNav />
+            <MyNav users={users} sendUserIdToMyNavBar={sendUserIdToApp} />
 
             <Link
               className=" d-flex me-2 shadow btn btn-danger border border-secondary"
