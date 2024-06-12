@@ -24,20 +24,6 @@ export default function ModalEditTask({
   const [validated, setValidated] = useState(false);
   console.log(validated);
 
-  // const [formData, setFormData] = useState({
-  //   // Initialize form data fields
-  //   userid: selecteduserID,
-  //   category: "Personal Task",
-  //   description: "",
-  //   deadline: "",
-  //   priority: "Low",
-  // });
-
-  // const handleChange = (e) => {
-  //   // Update the form data state when input values change
-  //   setFormData({ ...formData, [e.target.name]: e.target.value });
-  // };
-
   const [todoedit, setTodoedit] = useState({});
   //const [errors, setErrors] = useState({});
 
@@ -113,7 +99,7 @@ export default function ModalEditTask({
               className="mb-3"
             >
               <Form.Control
-                className="border border-secondary"
+                className="border border-secondary text-secondary"
                 placeholder="User Name"
                 aria-label="Username"
                 aria-describedby="Username"
@@ -133,7 +119,7 @@ export default function ModalEditTask({
                 className="mb-3"
               >
                 <Form.Select
-                  className="border border-secondary"
+                  className="border border-secondary text-secondary"
                   name="category"
                   value={todoData?.category}
                   disabled
@@ -235,14 +221,16 @@ export default function ModalEditTask({
         <Button
           variant="secondary"
           onClick={handleCloseEditModal}
-          className="border border-secondary"
+          className="border border-secondary p-2"
+          style={{ width: "20%" }}
         >
           Back
         </Button>
         <Button
           variant="primary"
           onClick={EditTask}
-          className="border border-secondary"
+          className="border border-secondary p-2"
+          style={{ width: "20%" }}
         >
           Edit
         </Button>

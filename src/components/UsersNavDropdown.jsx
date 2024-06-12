@@ -1,5 +1,5 @@
 import NavDropdown from "react-bootstrap/NavDropdown";
-import Image from "react-bootstrap/Image";
+//import Image from "react-bootstrap/Image";
 import { useState, useEffect } from "react";
 import useFetch from "../services/useFetch";
 import Spinner from "../Spinner";
@@ -52,10 +52,10 @@ export default function UsersNavDropdown() {
   return (
     <>
       <NavDropdown
-        title="Users"
+        title="USERS"
         id="userDropdown"
         onSelect={handleSelect}
-        className="border border-success bg-primary fw-bold "
+        className="border border-dark bg-primary fw-bold p-2 text-light"
       >
         {allUsers?.map((user) => {
           return (
@@ -64,13 +64,13 @@ export default function UsersNavDropdown() {
               key={user.id}
               id={user.id}
               value={user.id}
-              className="bg-warning bg-opacity-25"
+              className="bg-warning bg-opacity-25  table striped"
             >
-              <Image
-                src="../images/logo.jpeg"
-                alt={user.name}
-                style={{ height: "20px", width: "20px" }}
-              ></Image>
+              {/* <Image
+                  src="../images/logo.jpeg"
+                  alt={user.name}
+                  style={{ height: "20px", width: "20px" }}
+                ></Image> */}
               <span> {user.name} </span>
             </NavDropdown.Item>
           );

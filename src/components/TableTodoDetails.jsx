@@ -109,38 +109,6 @@ export default function TableTodoDetails({ selectedUser }) {
   };
   const handleCloseEditModal = () => setShowEditModal(false);
 
-  // const [data, setData] = useState(null);
-  // const [editError, setEditError] = useState(null);
-
-  // const handleEditClick = async (id) => {
-  //   try {
-  //     const response = await fetch("https://localhost:8083/api/todos/" + id, {
-  //       method: "PUT",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       // Your data to be sent in the request body
-  //       body: JSON.stringify({
-  //         id: "",
-  //         category: "",
-  //         description: "",
-  //         deadline: "",
-  //         priority: "",
-  //         completed: "",
-  //       }),
-  //     });
-
-  //     if (!response.ok) {
-  //       throw new Error("Network response was not ok");
-  //     }
-  //     const responseData = await response.json();
-  //     setData(responseData);
-  //   } catch (editError) {
-  //     setEditError(editError.message);
-  //     console.log(editError);
-  //   }
-  // };
-
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -153,7 +121,7 @@ export default function TableTodoDetails({ selectedUser }) {
       {selectedUser && (
         <Table
           striped
-          className="table table-warning table-hover border border-secondary"
+          className="table table-warning table-hover border border-secondary mt-3"
           hidden={todos.length > 0 ? "" : "hidden"}
         >
           <thead>
@@ -161,9 +129,9 @@ export default function TableTodoDetails({ selectedUser }) {
               <th colSpan={5}> {selectedUser?.name} </th>
             </tr>
             <tr className="table-info">
-              <th>TASK DESCRIPTION </th>
-              <th>TASK DEADLINE</th>
-              <th>SEE DETAILS OF TASK</th>
+              <th>DESCRIPTION</th>
+              <th>DEADLINE</th>
+              <th>SEE DETAILS</th>
               <th>DELETE TASK</th>
               <th>EDIT TASK</th>
             </tr>
@@ -176,17 +144,17 @@ export default function TableTodoDetails({ selectedUser }) {
                 <td>{todo.deadline}</td>
                 <td>
                   <LinkButton onClick={() => handleShowModal(todo)}>
-                    See Details
+                    Details
                   </LinkButton>
                 </td>
                 <td>
                   <LinkButton onClick={() => handleDeleteClick(todo.id)}>
-                    Delete Task
+                    Delete
                   </LinkButton>
                 </td>
                 <td>
                   <LinkButton onClick={() => handleShowEditModal(todo)}>
-                    Edit Task
+                    Edit
                   </LinkButton>
                 </td>
               </tr>

@@ -92,7 +92,11 @@ export default function ModalTaskDetails({
         } */}
       </Modal.Body>
       <Modal.Footer className="bg-info bg-opacity-75">
-        <Button variant="secondary" onClick={handleCloseModal}>
+        <Button
+          variant="secondary"
+          onClick={handleCloseModal}
+          style={{ width: "20%" }}
+        >
           Back
         </Button>
       </Modal.Footer>
