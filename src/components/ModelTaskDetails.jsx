@@ -41,11 +41,44 @@ export default function ModalTaskDetails({
       keyboard={false}
       centered
     >
-      <Modal.Header closeButton>
+      <Modal.Header closeButton className="bg-info bg-opacity-75">
         <Modal.Title>Task Details</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <div>Category: {todoData?.category}</div>
+      <Modal.Body className="bg-secondary bg-opacity-75">
+        <div className="container-fluid border border-secondary-subtle">
+          <div className="row mt-2 text-start text-light fw-medium">
+            <div className="col-5">CATEGORY</div>
+            <div className="col" id="category">
+              {todoData?.category}
+            </div>
+          </div>
+          <div className="row mt-2 text-start text-light fw-medium">
+            <div className="col-5">DESCRIPTION</div>
+            <div className="col" id="description">
+              {todoData?.description}
+            </div>
+          </div>
+          <div className="row mt-2 text-start text-light fw-medium">
+            <div className="col-5">DEADLINE</div>
+            <div className="col" id="deadline">
+              {todoData?.deadline}
+            </div>
+          </div>
+          <div className="row mt-2 text-start text-light fw-medium">
+            <div className="col-5">PRIORITY</div>
+            <div className="col badge bg-warning" id="priority">
+              {todoData?.priority}
+            </div>
+          </div>
+          <div className="row mt-2 mb-2 text-start text-light fw-medium">
+            <div className="col-6">COMPLETED</div>
+            <div className="col" id="completed">
+              {todoData?.completed ? completedTrue : completedFalse}
+            </div>
+          </div>
+        </div>
+
+        {/* <div>Category: {todoData?.category}</div>
         <div>Description: {todoData?.description}</div>
         <div>Deadline: {todoData?.deadline}</div>
         <div>
@@ -56,9 +89,9 @@ export default function ModalTaskDetails({
           <div>
             Completed: {todoData?.completed ? completedTrue : completedFalse}
           </div>
-        }
+        } */}
       </Modal.Body>
-      <Modal.Footer>
+      <Modal.Footer className="bg-info bg-opacity-75">
         <Button variant="secondary" onClick={handleCloseModal}>
           Back
         </Button>

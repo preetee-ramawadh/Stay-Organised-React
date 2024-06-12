@@ -15,31 +15,33 @@ import Asteric from "./Asteric";
 export default function SignUp() {
   const [validated, setValidated] = useState(false);
 
-  const [formData, setFormData] = useState({
-    // Initialize form data fields
-    name: "",
-    username: "",
-    password: "",
-    confirmpassword: "",
-  });
-  const handleChange = (e) => {
-    // Update the form data state when input values change
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  // const [formData, setFormData] = useState({
+  //   // Initialize form data fields
+  //   name: "",
+  //   username: "",
+  //   password: "",
+  //   confirmpassword: "",
+  // });
+  // const handleChange = (e) => {
+  //   // Update the form data state when input values change
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
+  // };
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-      setValidated(true);
-      return; // Exit early if the form is invalid
+
+      //return; // Exit early if the form is invalid
     }
+    setValidated(true);
 
     // Send the request
     fetch("http://localhost:8083/api/users", {
       method: "POST",
-      body: JSON.stringify(formData),
+      //body: JSON.stringify(formData),
+      body: JSON.stringify(""),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
@@ -82,8 +84,6 @@ export default function SignUp() {
                   type="text"
                   placeholder="your name"
                   aria-describedby="inputGroupPrepend"
-                  value={formData.name}
-                  onChange={handleChange}
                   required
                 />
               </FloatingLabel>
@@ -106,8 +106,6 @@ export default function SignUp() {
                   type="text"
                   placeholder="your user name"
                   aria-describedby="inputGroupPrepend"
-                  value={formData.username}
-                  onChange={handleChange}
                   required
                 />
               </FloatingLabel>
@@ -132,8 +130,6 @@ export default function SignUp() {
                     placeholder="enter password"
                     aria-describedby="inputGroupPrepend"
                     size="lg"
-                    value={formData.password}
-                    onChange={handleChange}
                     required
                   />
                 </FloatingLabel>
@@ -157,8 +153,6 @@ export default function SignUp() {
                     placeholder="confirm password"
                     aria-describedby="inputGroupPrepend"
                     size="lg"
-                    value={formData.confirmpassword}
-                    onChange={handleChange}
                     required
                   />
                 </FloatingLabel>

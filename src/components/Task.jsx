@@ -10,7 +10,11 @@ import Spinner from "../Spinner";
 
 import { useState } from "react";
 
-export default function Task({ selecteduser, selecteduserID, updateAllTodos }) {
+export default function Task({
+  selecteduser,
+  selecteduserID,
+  addnewtoAllTodos,
+}) {
   const [showCard, setShowCard] = useState(true);
   const handleCancel = () => {
     setShowCard(false);
@@ -81,7 +85,7 @@ export default function Task({ selecteduser, selecteduserID, updateAllTodos }) {
       .then((taskdata) => {
         console.log("Success:", taskdata);
         // update the todos data using addTodo
-        updateAllTodos({
+        addnewtoAllTodos({
           userid: selecteduserID,
           category: taskdata.category,
           description: taskdata.description,
@@ -104,8 +108,8 @@ export default function Task({ selecteduser, selecteduserID, updateAllTodos }) {
   return (
     <>
       {showCard && (
-        <Card className="border border-secondary" style={{ width: "30rem" }}>
-          <Card.Img variant="top" src="images/todobossday.jpeg" />
+        <Card className="border border-secondary bg-secondary bg-opacity-75">
+          {/* <Card.Img variant="top" src="images/todobossday.jpeg" /> */}
           <Card.Body>
             {/* <Form onSubmit={handleSubmit}> */}
             <Form>
@@ -116,6 +120,7 @@ export default function Task({ selecteduser, selecteduserID, updateAllTodos }) {
                   className="mb-3"
                 >
                   <Form.Control
+                    className="border border-secondary"
                     placeholder="User Name"
                     aria-label="Username"
                     aria-describedby="Username"
@@ -137,6 +142,7 @@ export default function Task({ selecteduser, selecteduserID, updateAllTodos }) {
                     className="mb-3"
                   >
                     <Form.Select
+                      className="border border-secondary"
                       name="category"
                       value={formData.category}
                       onChange={handleChange}
@@ -159,6 +165,7 @@ export default function Task({ selecteduser, selecteduserID, updateAllTodos }) {
                     className="mb-3"
                   >
                     <Form.Select
+                      className="border border-secondary"
                       name="priority"
                       value={formData.priority}
                       onChange={handleChange}
@@ -177,6 +184,7 @@ export default function Task({ selecteduser, selecteduserID, updateAllTodos }) {
                   className="mb-3"
                 >
                   <Form.Control
+                    className="border border-secondary"
                     type="date"
                     placeholder="deadline"
                     size="lg"
@@ -195,6 +203,7 @@ export default function Task({ selecteduser, selecteduserID, updateAllTodos }) {
                   className="mb-3"
                 >
                   <Form.Control
+                    className="border border-secondary"
                     as="textarea"
                     rows={3}
                     placeholder="Description"

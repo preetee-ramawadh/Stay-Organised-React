@@ -7,6 +7,7 @@ import Task from "./Task";
 import useFetch from "../services/useFetch";
 import Spinner from "../Spinner";
 import { useEffect } from "react";
+import ModalEditTask from "./ModalEditTask";
 
 export default function TableTodoDetails({ selectedUser }) {
   console.log("selectedUser in TableTodoDetails", selectedUser);
@@ -37,12 +38,36 @@ export default function TableTodoDetails({ selectedUser }) {
   console.log("alltodos set from useFetch ", alltodos);
   console.log("alltodos type", typeof alltodos);
 
-  //function to pass to child component to update todos
-  const updateAllTodos = (newTodo) => {
+  //function to pass to child component to add new todos
+  const addnewtoAllTodos = (newTodo) => {
     setAlltodos([...alltodos, newTodo]);
   };
 
-  console.log("updateAllTodos in TableTodo", alltodos);
+  //function to pass to child component to update todos
+  const updateTodo = (updatedTodo) => {
+    // Find the index of the task with the provided taskId
+    const taskIndex = alltodos.findIndex((todo) => todo.id === updatedTodo.id);
+
+    // Make sure the task exists
+    if (taskIndex !== -1) {
+      // Create a copy of the tasks array
+      const updatedTodos = [...alltodos];
+
+      // Update the task with the new data
+      updatedTodos[taskIndex] = {
+        ...updatedTodos[taskIndex],
+        userid: updatedTodo.id,
+        category: updatedTodo.category,
+        description: updatedTodo.description,
+        deadline: updatedTodo.deadline,
+        priority: updatedTodo.priority,
+      };
+
+      setAlltodos(updatedTodos);
+    }
+  };
+
+  console.log("addnewtoAllTodos in TableTodo", alltodos);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -76,6 +101,46 @@ export default function TableTodoDetails({ selectedUser }) {
       });
   };
 
+  const [showEditModal, setShowEditModal] = useState(false);
+
+  const handleShowEditModal = (todo) => {
+    setShowEditModal(true);
+    setTodoData(todo);
+  };
+  const handleCloseEditModal = () => setShowEditModal(false);
+
+  // const [data, setData] = useState(null);
+  // const [editError, setEditError] = useState(null);
+
+  // const handleEditClick = async (id) => {
+  //   try {
+  //     const response = await fetch("https://localhost:8083/api/todos/" + id, {
+  //       method: "PUT",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       // Your data to be sent in the request body
+  //       body: JSON.stringify({
+  //         id: "",
+  //         category: "",
+  //         description: "",
+  //         deadline: "",
+  //         priority: "",
+  //         completed: "",
+  //       }),
+  //     });
+
+  //     if (!response.ok) {
+  //       throw new Error("Network response was not ok");
+  //     }
+  //     const responseData = await response.json();
+  //     setData(responseData);
+  //   } catch (editError) {
+  //     setEditError(editError.message);
+  //     console.log(editError);
+  //   }
+  // };
+
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -88,17 +153,19 @@ export default function TableTodoDetails({ selectedUser }) {
       {selectedUser && (
         <Table
           striped
-          className="table table-warning table-hover border border-secondary "
+          className="table table-warning table-hover border border-secondary"
+          hidden={todos.length > 0 ? "" : "hidden"}
         >
           <thead>
             <tr className="table-primary">
-              <th colSpan={4}> {selectedUser?.name} </th>
+              <th colSpan={5}> {selectedUser?.name} </th>
             </tr>
             <tr className="table-info">
               <th>TASK DESCRIPTION </th>
               <th>TASK DEADLINE</th>
-              <th>SEE DETAILS OF TASK?</th>
-              <th>DELETE TASK?</th>
+              <th>SEE DETAILS OF TASK</th>
+              <th>DELETE TASK</th>
+              <th>EDIT TASK</th>
             </tr>
           </thead>
           <tbody>
@@ -117,24 +184,40 @@ export default function TableTodoDetails({ selectedUser }) {
                     Delete Task
                   </LinkButton>
                 </td>
+                <td>
+                  <LinkButton onClick={() => handleShowEditModal(todo)}>
+                    Edit Task
+                  </LinkButton>
+                </td>
               </tr>
             ))}
           </tbody>
         </Table>
       )}
-      <Button onClick={handleClick}>Add Task</Button>
+      <Button onClick={handleClick} className="mb-3">
+        Add Task
+      </Button>
       {/* Render YourComponent if showComponent is true */}
       {showTaskComponent && (
         <Task
           selecteduser={selectedUser?.name}
           selecteduserID={selectedUser?.id}
-          updateAllTodos={updateAllTodos}
+          addnewtoAllTodos={addnewtoAllTodos}
         />
       )}{" "}
       <ModalTaskDetails
         showModal={showModal}
         handleCloseModal={handleCloseModal}
         todoData={todoData}
+      />
+      <ModalEditTask
+        showEditModal={showEditModal}
+        setShowEditModal={setShowEditModal}
+        handleCloseEditModal={handleCloseEditModal}
+        todoData={todoData}
+        selecteduser={selectedUser?.name}
+        selecteduserID={selectedUser?.id}
+        updateTodo={updateTodo}
       />
     </>
   );
