@@ -29,7 +29,16 @@ export default function MyNav({ users, sendUserIdToMyNavBar }) {
           <NavDropdown.Divider />
           <NavDropdown.Item>FAQs</NavDropdown.Item>
         </NavDropdown>
-        <Nav.Link onClick={handleFeaturesShow}>Features</Nav.Link>
+        <Nav.Link
+          className="nav-link fw-medium"
+          data-bs-toggle="offcanvas"
+          href="#offcanvasFeatures"
+          role="button"
+          aria-controls="offcanvasFeatures"
+          onClick={handleFeaturesShow}
+        >
+          Features
+        </Nav.Link>
         <Nav.Link onClick={handleResourcesShow}>Resources</Nav.Link>
         <Nav.Link onClick={handleShowModal}>Subscribe</Nav.Link>
 

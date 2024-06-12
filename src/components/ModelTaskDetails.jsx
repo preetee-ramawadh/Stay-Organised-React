@@ -30,7 +30,7 @@ export default function ModalTaskDetails({
       <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z" />
     </svg>
   );
-  console.log("todoData");
+  console.log("todoData in ModalTask");
   console.log(todoData?.completed);
   return (
     <Modal
@@ -48,7 +48,10 @@ export default function ModalTaskDetails({
         <div>Category: {todoData?.category}</div>
         <div>Description: {todoData?.description}</div>
         <div>Deadline: {todoData?.deadline}</div>
-        <div>Priority: {todoData?.priority}</div>
+        <div>
+          Priority:{" "}
+          <span className="badge bg-warning">{todoData?.priority}</span>{" "}
+        </div>
         {
           <div>
             Completed: {todoData?.completed ? completedTrue : completedFalse}

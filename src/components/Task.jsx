@@ -10,7 +10,7 @@ import Spinner from "../Spinner";
 
 import { useState } from "react";
 
-export default function Task({ selecteduser, selecteduserID }) {
+export default function Task({ selecteduser, selecteduserID, updateAllTodos }) {
   const [showCard, setShowCard] = useState(true);
   const handleCancel = () => {
     setShowCard(false);
@@ -80,7 +80,14 @@ export default function Task({ selecteduser, selecteduserID }) {
       })
       .then((taskdata) => {
         console.log("Success:", taskdata);
-        // Handle the response data as needed
+        // update the todos data using addTodo
+        updateAllTodos({
+          userid: selecteduserID,
+          category: taskdata.category,
+          description: taskdata.description,
+          deadline: taskdata.deadline,
+          priority: taskdata.priority,
+        });
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -155,9 +162,15 @@ export default function Task({ selecteduser, selecteduserID }) {
                       value={formData.priority}
                       onChange={handleChange}
                     >
-                      <option key="low">Low</option>
-                      <option key="medium">Medium</option>
-                      <option key="high">High</option>
+                      <option key="low" className="badge bg-primary">
+                        Low
+                      </option>
+                      <option key="medium" className="badge bg-primary">
+                        Medium
+                      </option>
+                      <option key="high" className="badge bg-primary">
+                        High
+                      </option>
                     </Form.Select>
                   </FloatingLabel>
                 </Form.Group>
