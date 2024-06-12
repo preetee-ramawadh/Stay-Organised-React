@@ -21,13 +21,12 @@ export default function TableTodoDetails({ selectedUser }) {
     error,
   } = useFetch("api/todos/byuser/" + selectedUser?.id); //fetching users todo list
 
-  console.log("todos from useFetch");
-  console.log(todos);
-  console.log("type of todos");
-  console.log(typeof todos);
+  console.log("todos from useFetch", todos);
+  console.log("type of todos", typeof todos);
 
   // taking initial data in var alltodos using useState
   const [alltodos, setAlltodos] = useState([]);
+  console.log("alltodos type immediately after declaring", typeof alltodos);
 
   useEffect(() => {
     if (todos) {
@@ -35,18 +34,15 @@ export default function TableTodoDetails({ selectedUser }) {
     }
   }, [todos]);
 
-  console.log("alltodos set from useFetch ");
-  console.log(alltodos);
-  console.log("alltodos type");
-  console.log(typeof alltodos);
+  console.log("alltodos set from useFetch ", alltodos);
+  console.log("alltodos type", typeof alltodos);
 
   //function to pass to child component to update todos
-  const updateAllTodos = (newData) => {
-    setAlltodos(...alltodos, newData);
+  const updateAllTodos = (newTodo) => {
+    setAlltodos([...alltodos, newTodo]);
   };
 
-  console.log("updateAllTodos in TableTodo");
-  console.log(alltodos);
+  console.log("updateAllTodos in TableTodo", alltodos);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -127,6 +123,7 @@ export default function TableTodoDetails({ selectedUser }) {
         </Table>
       )}
       <Button onClick={handleClick}>Add Task</Button>
+      {/* Render YourComponent if showComponent is true */}
       {showTaskComponent && (
         <Task
           selecteduser={selectedUser?.name}
@@ -134,7 +131,6 @@ export default function TableTodoDetails({ selectedUser }) {
           updateAllTodos={updateAllTodos}
         />
       )}{" "}
-      {/* Render YourComponent if showComponent is true */}
       <ModalTaskDetails
         showModal={showModal}
         handleCloseModal={handleCloseModal}

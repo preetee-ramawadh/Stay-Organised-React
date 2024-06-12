@@ -18,7 +18,6 @@ export default function Login() {
       event.preventDefault();
       event.stopPropagation();
     }
-
     setValidated(true);
   };
   return (
@@ -30,7 +29,7 @@ export default function Login() {
       <Card.Body>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Form.Group controlId="formGroupGoogle">
-            <InputGroup hasValidation>
+            <InputGroup>
               <InputGroup.Text id="inputGroupPrependGoogle">
                 <span id="basic-addonG">
                   <svg
@@ -55,14 +54,14 @@ export default function Login() {
                   aria-describedby="inputGroupPrepend"
                 />
               </FloatingLabel>
-              <Form.Control.Feedback type="invalid">
+              {/* <Form.Control.Feedback type="invalid">
                 Please choose a username.
-              </Form.Control.Feedback>
+              </Form.Control.Feedback> */}
             </InputGroup>
           </Form.Group>
 
           <Form.Group controlId="formGroupFacebook">
-            <InputGroup hasValidation>
+            <InputGroup>
               <InputGroup.Text id="inputGroupPrependFacebook">
                 <span id="basic-addonF">
                   <svg
@@ -87,14 +86,14 @@ export default function Login() {
                   aria-describedby="inputGroupPrepend"
                 />
               </FloatingLabel>
-              <Form.Control.Feedback type="invalid">
+              {/* <Form.Control.Feedback type="invalid">
                 Please choose a username.
-              </Form.Control.Feedback>
+              </Form.Control.Feedback> */}
             </InputGroup>
           </Form.Group>
 
           <Form.Group controlId="formGroupApple">
-            <InputGroup hasValidation>
+            <InputGroup>
               <InputGroup.Text id="inputGroupPrependApple">
                 <span id="basic-addonA">
                   <svg
@@ -120,9 +119,9 @@ export default function Login() {
                   aria-describedby="inputGroupPrepend"
                 />
               </FloatingLabel>
-              <Form.Control.Feedback type="invalid">
+              {/* <Form.Control.Feedback type="invalid">
                 Please choose a username.
-              </Form.Control.Feedback>
+              </Form.Control.Feedback> */}
             </InputGroup>
           </Form.Group>
 
@@ -173,6 +172,7 @@ export default function Login() {
             type="submit"
             className="shadow border border-secondary p-2"
             style={{ width: "100%" }}
+            //disabled={!validated} // Disable button if form is not valid
           >
             Log In
           </Button>

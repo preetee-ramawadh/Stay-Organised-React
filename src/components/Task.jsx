@@ -17,7 +17,7 @@ export default function Task({ selecteduser, selecteduserID, updateAllTodos }) {
   };
 
   const { data: categories, loading, error } = useFetch("api/categories"); //fetching categories list
-  console.log(categories);
+  console.log("categories in Task.jsx", categories);
   console.log(selecteduser);
 
   //const navigate = useNavigate();
@@ -25,14 +25,14 @@ export default function Task({ selecteduser, selecteduserID, updateAllTodos }) {
   const [validated, setValidated] = useState(false);
   console.log(validated);
 
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    setValidated(true);
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const form = event.currentTarget;
+  //   if (form.checkValidity() === false) {
+  //     event.stopPropagation();
+  //   }
+  //   setValidated(true);
+  // };
 
   const [formData, setFormData] = useState({
     // Initialize form data fields
@@ -107,7 +107,8 @@ export default function Task({ selecteduser, selecteduserID, updateAllTodos }) {
         <Card className="border border-secondary" style={{ width: "30rem" }}>
           <Card.Img variant="top" src="images/todobossday.jpeg" />
           <Card.Body>
-            <Form onSubmit={handleSubmit}>
+            {/* <Form onSubmit={handleSubmit}> */}
+            <Form>
               <Form.Group className="mb-3" controlId="formGridUsername">
                 <FloatingLabel
                   controlId="floatingName"
@@ -162,15 +163,9 @@ export default function Task({ selecteduser, selecteduserID, updateAllTodos }) {
                       value={formData.priority}
                       onChange={handleChange}
                     >
-                      <option key="low" className="badge bg-primary">
-                        Low
-                      </option>
-                      <option key="medium" className="badge bg-primary">
-                        Medium
-                      </option>
-                      <option key="high" className="badge bg-primary">
-                        High
-                      </option>
+                      <option key="low">Low</option>
+                      <option key="medium">Medium</option>
+                      <option key="high">High</option>
                     </Form.Select>
                   </FloatingLabel>
                 </Form.Group>
@@ -200,7 +195,8 @@ export default function Task({ selecteduser, selecteduserID, updateAllTodos }) {
                   className="mb-3"
                 >
                   <Form.Control
-                    type="textarea"
+                    as="textarea"
+                    rows={3}
                     placeholder="Description"
                     size="lg"
                     name="description"
